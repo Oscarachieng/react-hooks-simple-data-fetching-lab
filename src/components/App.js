@@ -4,7 +4,7 @@ import React, { useState , useEffect } from "react";
  
 function App () {
    const [ image, setImage] = useState ([]);
-  //  const [ isLoaded, setIsLoaded] = useState(false)
+   const [ isLoaded, setIsLoaded] = useState(false)
 
    useEffect ( () => {
        fetch ("https://dog.ceo/api/breeds/image/random")
@@ -12,11 +12,11 @@ function App () {
        .then(data => {
            console.log(data)
            setImage(data.message)
-          //  setIsLoaded(true)
+           setIsLoaded(true)
        })
    }, []);
 
-   if (!image) {
+   if (!isLoaded) {
     return <h2>Loading...</h2>
    }
 
@@ -24,7 +24,7 @@ function App () {
        
       <>  
         <p>Oscar</p>
-        <img src={image} alt = "My dog"/>
+        <img src={image} alt = "A Random Dog"/>
       </>
    )
   }
